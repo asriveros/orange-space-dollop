@@ -1,27 +1,31 @@
 import './App.css';
+import { BrowserRouter, Navigate } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Menu from './components/Menu';
+import Contactos from './components/Contactos';
+import Navbarprim from './layouts/Navbarprim';
+import bootstrap from "bootstrap/dist/css/bootstrap.min.css?inline";
+import Footer1 from './layouts/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Navbarprim/>}>
+            <Route index element={<Home/>}/>
+            <Route path='Menu' element={<Menu/>}/>
+            <Route path='Contactos' element={<Contactos/>}/>
+
+            <Route path='*' element={<Navigate replace to="/"/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      </div>
+      
     </div>
   );
 }
